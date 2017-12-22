@@ -10,7 +10,7 @@ defmodule Custodian.Github.Tentacat.Labels do
   @behaviour Custodian.Github.Labels
 
   alias Custodian.Bots.Bot
-  alias Custodian.Github.Labels
+  alias Custodian.Github
   alias Custodian.Github.Tentacat.Client
 
   @doc """
@@ -26,7 +26,7 @@ defmodule Custodian.Github.Tentacat.Labels do
 
   [More info]: https://developer.github.com/v3/issues/labels/#list-labels-on-an-issue
   """
-  @spec all(Labels.pull_request()) :: [String.t()]
+  @spec all(Github.pull_request()) :: [String.t()]
   def all(pull_request)
 
   def all({repo, pr}) do
@@ -55,9 +55,9 @@ defmodule Custodian.Github.Tentacat.Labels do
   [More info]: https://developer.github.com/v3/issues/labels/#add-labels-to-an-issue
   """
   @spec add(
-          Labels.pull_request(),
+          Github.pull_request(),
           [String.t()] | String.t()
-        ) :: Labels.pull_request()
+        ) :: Github.pull_request()
   def add(pull_request, labels)
 
   def add({repo, pr}, labels) do
@@ -86,7 +86,7 @@ defmodule Custodian.Github.Tentacat.Labels do
 
   [More info]: https://developer.github.com/v3/issues/labels/#remove-a-label-from-an-issue
   """
-  @spec remove(Labels.pull_request(), String.t()) :: Labels.pull_request()
+  @spec remove(Github.pull_request(), String.t()) :: Github.pull_request()
   def remove(pull_request, label)
 
   def remove({repo, pr}, label) do

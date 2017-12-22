@@ -10,6 +10,11 @@ defmodule Custodian.Github do
   alias Custodian.Bots.Bot
   alias Custodian.Github.Processor
 
+  @typedoc """
+  Pull request identifier as a tuple with the repo and integer ID.
+  """
+  @type pull_request :: {Custodian.Bots.Bot.t(), integer}
+
   @doc """
   Calls the processing function appropriate for the `type` and `params`.
 

@@ -8,38 +8,35 @@ defmodule Custodian.Github.Labels do
   [Tentacat]: https://github.com/edgurgel/tentacat
   """
 
-  @typedoc """
-  Pull request identifier as a tuple with the repo and integer ID.
-  """
-  @type pull_request :: {Custodian.Bots.Bot.t(), integer}
+  alias Custodian.Github
 
   @doc """
   Returns a list of strings representing all of the labels on a
   given pull request.
   """
-  @callback all(pull_request :: pull_request) :: [String.t()]
+  @callback all(pull_request :: Github.pull_request()) :: [String.t()]
 
   @doc """
   Adds the provided label(s) to the given pull request.
   """
   @callback add(
-              pull_request :: pull_request,
+              pull_request :: Github.pull_request(),
               label :: String.t()
-            ) :: pull_request
+            ) :: Github.pull_request()
 
   @doc """
   Adds the provided label(s) to the given pull request.
   """
   @callback add(
-              pull_request :: pull_request,
+              pull_request :: Github.pull_request(),
               labels :: [String.t()]
-            ) :: pull_request
+            ) :: Github.pull_request()
 
   @doc """
   Removes a given label from a given pull request.
   """
   @callback remove(
-              pull_request :: pull_request,
+              pull_request :: Github.pull_request(),
               label :: String.t()
-            ) :: pull_request
+            ) :: Github.pull_request()
 end
