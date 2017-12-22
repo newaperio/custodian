@@ -118,6 +118,10 @@ defmodule Custodian.Github.Processor do
 
   - Removes needs-review and ready-to-merge labels
   - Adds in-progress label
+
+  ## Commented
+  For reviews that are just **comments**, we ignore the payload and return
+  an error. No action is taken.
   """
   @spec review(map) :: {:ok, Bot.t()}
   def review(%{"review" => %{"state" => "approved"}} = params) do
@@ -141,6 +145,8 @@ defmodule Custodian.Github.Processor do
 
     {:ok, bot}
   end
+
+  def review(_params), do: :error
 
   @spec create_bots(integer, [Bot.t()]) :: {:ok, [Bot.t()]}
   defp create_bots(installation_id, bots) do
