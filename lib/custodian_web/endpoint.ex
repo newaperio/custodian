@@ -20,6 +20,7 @@ defmodule CustodianWeb.Endpoint do
   plug(Plug.MethodOverride)
   plug(Plug.Head)
 
+  use Appsignal.Phoenix
   plug(CustodianWeb.Router)
 
   @doc """

@@ -28,7 +28,7 @@ defmodule Custodian.Mixfile do
   def application do
     [
       mod: {Custodian.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:appsignal, :logger, :runtime_tools]
     ]
   end
 
@@ -41,6 +41,7 @@ defmodule Custodian.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:appsignal, "~> 1.0"},
       {:cowboy, "~> 1.0"},
       {:credo, "~> 0.5", only: [:dev, :test]},
       {:dialyxir, "~> 0.5.1"},
@@ -48,7 +49,7 @@ defmodule Custodian.Mixfile do
       {:inch_ex, "~> 0.5", only: [:dev, :test]},
       {:jose, "~> 1.8"},
       {:phoenix_ecto, "~> 3.2"},
-      {:phoenix, github: "phoenixframework/phoenix", ref: "7af99b6"},
+      {:phoenix, github: "phoenixframework/phoenix", ref: "7af99b6", override: true},
       {:postgrex, ">= 0.0.0"},
       {:sobelow, "~> 0.3", only: [:dev]},
       {:tentacat, github: "edgurgel/tentacat"}

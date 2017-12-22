@@ -14,12 +14,20 @@ config :custodian,
 config :custodian, CustodianWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "U+h+/jvWMWv75E6m8bBoK+kv43/WWSdwP/IRcW0ZY5IsadWiOs3NOBYCBaG/Ab7m",
-  render_errors: [view: CustodianWeb.ErrorView, accepts: ~w(json)]
+  render_errors: [view: CustodianWeb.ErrorView, accepts: ~w(json)],
+  instrumenters: [Appsignal.Phoenix.Instrumenter]
 
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
+
+# Configures AppSignal instrumentation
+config :custodian, Custodian.Repo, loggers: [Appsignal.Ecto, Ecto.LogEntry]
+
+config :phoenix, :template_engines,
+  eex: Appsignal.Phoenix.Template.EExEngine,
+  exs: Appsignal.Phoenix.Template.ExsEngine
 
 # Configures Tentacat with bot headers
 config :tentacat, :extra_headers, [{"Accept", "application/vnd.github.machine-man-preview+json"}]
