@@ -112,6 +112,7 @@ defmodule Custodian.Github.Processor do
 
   - Removes needs-review and in-progress labels
   - Adds ready-to-merge label
+  - Merges changes from the base branch to keep head updated
 
   ## Changes Requested
   Processes a **changes requested** pull request review.
@@ -124,13 +125,23 @@ defmodule Custodian.Github.Processor do
   an error. No action is taken.
   """
   @spec review(map) :: {:ok, Bot.t()}
-  def review(%{"review" => %{"state" => "approved"}} = params) do
-    bot = Bots.get_bot_by!(repo_id: params["repository"]["id"])
+  def review(%{
+        "review" => %{"state" => "approved"},
+        "pull_request" => pr_params,
+        "repository" => %{"id" => repo_id}
+      }) do
+    bot = Bots.get_bot_by!(repo_id: repo_id)
 
-    {bot, params["pull_request"]["number"]}
+    {bot, pr_params["number"]}
     |> @github.Labels.remove("needs-review")
     |> @github.Labels.remove("in-progress")
     |> @github.Labels.add("ready-to-merge")
+
+    @github.Merges.merge(
+      bot,
+      pr_params["head"]["ref"],
+      pr_params["base"]["ref"]
+    )
 
     {:ok, bot}
   end
