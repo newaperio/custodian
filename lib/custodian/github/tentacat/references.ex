@@ -31,7 +31,7 @@ defmodule Custodian.Github.Tentacat.References do
       bot.owner,
       bot.name,
       "heads/#{branch}",
-      Client.installation(bot)
+      Client.installation(bot.installation_id)
     )
   end
 end
