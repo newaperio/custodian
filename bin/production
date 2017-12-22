@@ -1,0 +1,2 @@
+#!/bin/sh
+HEROKU_APP=na-custodian exec "${HEROKU_COMMAND:-heroku}" "$@"

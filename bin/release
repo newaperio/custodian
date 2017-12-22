@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Run this script in Heroku's release phase.
+
+set -e
+
+POOL_SIZE=2 mix ecto.migrate
