@@ -31,14 +31,18 @@ defmodule Custodian.Github.Processor do
   """
   @spec installation(map) :: {:ok, [Bot.t()]}
   def installation(%{"action" => "created"} = params) do
+    Appsignal.increment_counter("event_installation_created_count", 1)
     create_bots(params["installation"]["id"], params["repositories"])
   end
 
   def installation(%{"action" => "added"} = params) do
+    Appsignal.increment_counter("event_installation_added_count", 1)
     create_bots(params["installation"]["id"], params["repositories_added"])
   end
 
   def installation(%{"action" => "deleted"} = params) do
+    Appsignal.increment_counter("event_installation_deleted_count", 1)
+    Appsignal.increment_counter("bot_count", -1)
     bot = Bots.get_bot_by!(installation_id: params["installation"]["id"])
     Bots.delete_bot(bot)
   end
@@ -65,6 +69,7 @@ defmodule Custodian.Github.Processor do
   """
   @spec pr(map) :: {:ok, Bot.t()}
   def pr(%{"pull_request" => %{"state" => "open"}} = params) do
+    Appsignal.increment_counter("event_pr_open_count", 1)
     bot = Bots.get_bot_by!(repo_id: params["repository"]["id"])
 
     labels = @github.Labels.all({bot, params["pull_request"]["number"]})
@@ -80,6 +85,7 @@ defmodule Custodian.Github.Processor do
   end
 
   def pr(%{"pull_request" => %{"state" => "closed"}} = params) do
+    Appsignal.increment_counter("event_pr_closed_count", 1)
     bot = Bots.get_bot_by!(repo_id: params["repository"]["id"])
     branch = params["pull_request"]["head"]["ref"]
 
@@ -94,6 +100,7 @@ defmodule Custodian.Github.Processor do
   end
 
   def pr(%{"pull_request" => %{"state" => "reopened"}} = params) do
+    Appsignal.increment_counter("event_pr_reopened_count", 1)
     bot = Bots.get_bot_by!(repo_id: params["repository"]["id"])
 
     {bot, params["pull_request"]["number"]}
@@ -130,6 +137,7 @@ defmodule Custodian.Github.Processor do
         "pull_request" => pr_params,
         "repository" => %{"id" => repo_id}
       }) do
+    Appsignal.increment_counter("event_review_approved_count", 1)
     bot = Bots.get_bot_by!(repo_id: repo_id)
 
     {bot, pr_params["number"]}
@@ -147,6 +155,7 @@ defmodule Custodian.Github.Processor do
   end
 
   def review(%{"review" => %{"state" => "changes_requested"}} = params) do
+    Appsignal.increment_counter("event_review_changes_requested_count", 1)
     bot = Bots.get_bot_by!(repo_id: params["repository"]["id"])
 
     {bot, params["pull_request"]["number"]}
@@ -177,6 +186,7 @@ defmodule Custodian.Github.Processor do
         )
       end)
 
+    Appsignal.increment_counter("bot_count", multi |> Multi.to_list() |> length)
     Repo.transaction(multi)
   end
 end
