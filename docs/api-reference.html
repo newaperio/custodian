@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.18.1">
+    <title>API Reference – Custodian v0.0.1</title>
+    <link rel="stylesheet" href="dist/app-c922dbe7ef.css" />
+    
+    <script src="dist/sidebar_items-3b559260b6.js"></script>
+    
+    
+    
+    
+  </head>
+  <body data-type="extras">
+    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+
+<div class="main">
+<button class="sidebar-toggle">
+  <span class="icon-menu" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Sidebar</span>
+</button>
+<section class="sidebar">
+
+  
+  <a href="readme.html" class="sidebar-projectLink">
+    <div class="sidebar-projectDetails">
+      <h1 class="sidebar-projectName">
+        Custodian
+      </h1>
+      <h2 class="sidebar-projectVersion">
+        v0.0.1
+      </h2>
+    </div>
+    
+  </a>
+
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <input name="q" type="text" id="search-list" class="search-input" placeholder="search" aria-label="Search" autocomplete="off" />
+  </form>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+    
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+    
+
+    
+
+    
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+<h1>
+  <small class="visible-xs">Custodian v0.0.1</small>
+  API Reference
+</h1>
+
+
+  <section class="details-list">
+    <h2 id="modules" class="section-heading">
+  <a href="#modules" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Modules
+</h2>
+
+    <div class="summary">
+      <div class="summary-row">
+  <div class="summary-signature"><a href="Custodian.html">Custodian</a></div>
+  
+    <div class="summary-synopsis"><p><strong>Custodian</strong> is a GitHub bot to manage routine development tasks. At a
+high-level it attempts to do the following</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="Custodian.Bots.html">Custodian.Bots</a></div>
+  
+    <div class="summary-synopsis"><p>The Bots context provides a boundary into the <a href="Custodian.Bots.Bot.html"><code class="inline">Custodian.Bots.Bot</code></a> schema. It
+provides functions for listing, creating, updating, and deleting bots</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="Custodian.Bots.Bot.html">Custodian.Bots.Bot</a></div>
+  
+    <div class="summary-synopsis"><p>A Bot is installed on an individual repo on GitHub. It holds data about its
+repo and installation</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="Custodian.Github.html">Custodian.Github</a></div>
+  
+    <div class="summary-synopsis"><p>The GitHub context provides a boundary into the GitHub API client interface
+and associated domain logic. The top-level class provides a way to process
+webhook payloads from GitHub</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="Custodian.Github.Client.html">Custodian.Github.Client</a></div>
+  
+    <div class="summary-synopsis"><p>Behaviour interface for taking actions on specific repos on GitHub</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="Custodian.Github.Labels.html">Custodian.Github.Labels</a></div>
+  
+    <div class="summary-synopsis"><p>Behaviour interface for interacting with labels on pull requests on GitHub</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="Custodian.Github.Merges.html">Custodian.Github.Merges</a></div>
+  
+    <div class="summary-synopsis"><p>Behaviour interface for merging branches on GitHub</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="Custodian.Github.Processor.html">Custodian.Github.Processor</a></div>
+  
+    <div class="summary-synopsis"><p>Processing functions for each type of event from GitHub’s webhook that we
+respond to</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="Custodian.Github.References.html">Custodian.Github.References</a></div>
+  
+    <div class="summary-synopsis"><p>Behaviour interface for interacting with branches on GitHub</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="Custodian.Github.Tentacat.Client.html">Custodian.Github.Tentacat.Client</a></div>
+  
+    <div class="summary-synopsis"><p>Provides an implementation of the <a href="Custodian.Github.Client.html"><code class="inline">Custodian.Github.Client</code></a> behaviour with
+the GitHub API</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="Custodian.Github.Tentacat.Labels.html">Custodian.Github.Tentacat.Labels</a></div>
+  
+    <div class="summary-synopsis"><p>Provides an implementation of the <a href="Custodian.Github.Labels.html"><code class="inline">Custodian.Github.Labels</code></a> behaviour with
+the GitHub API</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="Custodian.Github.Tentacat.Merges.html">Custodian.Github.Tentacat.Merges</a></div>
+  
+    <div class="summary-synopsis"><p>Provides an implementation of the <a href="Custodian.Github.Merges.html"><code class="inline">Custodian.Github.Merges</code></a> behaviour with
+the GitHub API</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="Custodian.Github.Tentacat.References.html">Custodian.Github.Tentacat.References</a></div>
+  
+    <div class="summary-synopsis"><p>Provides an implementation of the <a href="Custodian.Github.References.html"><code class="inline">Custodian.Github.References</code></a> behaviour
+with the GitHub API</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="Custodian.Repo.html">Custodian.Repo</a></div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="CustodianWeb.html">CustodianWeb</a></div>
+  
+    <div class="summary-synopsis"><p>The entrypoint for defining your web interface, such
+as controllers, views, channels and so on</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="CustodianWeb.Endpoint.html">CustodianWeb.Endpoint</a></div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="CustodianWeb.ErrorView.html">CustodianWeb.ErrorView</a></div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="CustodianWeb.FallbackController.html">CustodianWeb.FallbackController</a></div>
+  
+    <div class="summary-synopsis"><p>Translates controller action results into valid <a href="https://hexdocs.pm/plug/1.4.3/Plug.Conn.html"><code class="inline">Plug.Conn</code></a> responses</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="CustodianWeb.Router.html">CustodianWeb.Router</a></div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="CustodianWeb.Router.Helpers.html">CustodianWeb.Router.Helpers</a></div>
+  
+    <div class="summary-synopsis"><p>Module with named helpers generated from CustodianWeb.Router</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="CustodianWeb.WebhookController.html">CustodianWeb.WebhookController</a></div>
+  
+    <div class="summary-synopsis"><p>Responds to the GitHub webhook and sends the payload for processing</p>
+</div>
+  
+</div>
+
+    </div>
+  </section>
+
+
+
+
+
+
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.18.1),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+        <button class="night-mode-toggle"><span class="sr-only">Switch theme</span></button>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  <script src="dist/app-778c9ef903.js"></script>
+  
+  
+  
+  
+  </body>
+</html>
+

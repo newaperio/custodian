@@ -15,10 +15,7 @@ defmodule Custodian.Mixfile do
       name: "Custodian",
       source_url: "https://github.com/newaperio/custodian",
       source_root: ".",
-      docs: [
-        main: "readme",
-        extras: ["README.md": [title: "README"]]
-      ]
+      docs: docs()
     ]
   end
 
@@ -67,6 +64,15 @@ defmodule Custodian.Mixfile do
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate", "test"]
+    ]
+  end
+
+  # Configuration for ExDoc documentation generator
+  defp docs do
+    [
+      main: "readme",
+      extras: ["README.md": [title: "README"]],
+      output: "docs"
     ]
   end
 end
