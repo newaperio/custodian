@@ -19,13 +19,19 @@ defmodule Custodian.Github.LabelsTest do
   end
 
   test "adds given label" do
-    assert @github.Labels.add(@repo, "needs-review") == @repo
-    assert_received {:add, ["needs-review"]}
+    assert @github.Labels.add(@repo, "ready-to-merge") == @repo
+    assert_received {:add, ["ready-to-merge"]}
   end
 
   test "adds given labels" do
-    assert @github.Labels.add(@repo, ["needs-review", "in-progress"]) == @repo
-    assert_received {:add, ["needs-review", "in-progress"]}
+    assert @github.Labels.add(@repo, ["ready-to-merge", "blocked"]) == @repo
+    assert_received {:add, ["ready-to-merge", "blocked"]}
+  end
+
+  test "doesn't add labels that are already present" do
+    labels = ["needs-review", "ready-to-merge"]
+    assert @github.Labels.add(@repo, labels) == @repo
+    assert_received {:add, ["ready-to-merge"]}
   end
 
   test "removes given label" do

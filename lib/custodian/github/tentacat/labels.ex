@@ -42,7 +42,9 @@ defmodule Custodian.Github.Tentacat.Labels do
   end
 
   @doc """
-  Adds the provided label(s) to the given pull request. [More info].
+  Adds the provided label(s) to the given pull request. Checks if labels
+  are present before trying to add. This avoids creating duplicate
+  events on the pull request timeline. [More info].
 
   ## Examples
 
@@ -61,11 +63,13 @@ defmodule Custodian.Github.Tentacat.Labels do
   def add(pull_request, labels)
 
   def add({repo, pr}, labels) do
+    new_labels = List.wrap(labels) -- all({repo, pr})
+
     Tentacat.Issues.Labels.add(
       repo.owner,
       repo.name,
       pr,
-      List.wrap(labels),
+      new_labels,
       client(repo)
     )
 

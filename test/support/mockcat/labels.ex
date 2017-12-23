@@ -8,7 +8,9 @@ defmodule Custodian.Github.Mockcat.Labels do
   end
 
   def add({repo, pr}, labels) do
-    send(self(), {:add, List.wrap(labels)})
+    new_labels = List.wrap(labels) -- all({repo, pr})
+
+    send(self(), {:add, new_labels})
 
     {repo, pr}
   end
