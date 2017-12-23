@@ -168,7 +168,7 @@ defmodule Custodian.Github.Processor do
 
   def review(_params), do: :error
 
-  @spec create_bots(integer, [Bot.t()]) :: {:ok, [Bot.t()]}
+  @spec create_bots(integer, [map]) :: {:ok, [Bot.t()]}
   defp create_bots(installation_id, bots) do
     multi =
       Enum.reduce(Enum.with_index(bots), Multi.new(), fn {bot, index}, multi ->
