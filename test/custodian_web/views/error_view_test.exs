@@ -4,8 +4,16 @@ defmodule CustodianWeb.ErrorViewTest do
   # Bring render/3 and render_to_string/3 for testing custom views
   import Phoenix.View
 
+  test "renders 400.json with unsupported event" do
+    assert render(CustodianWeb.ErrorView, "400.json", %{error: :unsupported_event}) == %{
+             errors: %{detail: "Unsupported event"}
+           }
+  end
+
   test "renders 400.json" do
-    assert render(CustodianWeb.ErrorView, "400.json", []) == %{errors: %{detail: "Bad request"}}
+    assert render(CustodianWeb.ErrorView, "400.json", []) == %{
+             errors: %{detail: "Bad request"}
+           }
   end
 
   test "renders 404.json" do

@@ -12,9 +12,9 @@ defmodule CustodianWeb.FallbackController do
     |> render(CustodianWeb.ErrorView, :"404")
   end
 
-  def call(conn, :error) do
+  def call(conn, {:error, :unsupported_event}) do
     conn
     |> put_status(:bad_request)
-    |> render(CustodianWeb.ErrorView, :"400")
+    |> render(CustodianWeb.ErrorView, :"400", %{error: :unsupported_event})
   end
 end

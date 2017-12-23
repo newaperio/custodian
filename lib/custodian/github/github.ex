@@ -55,6 +55,6 @@ defmodule Custodian.Github do
   def process_event("pull_request_review", params), do: Processor.review(params)
 
   def process_event(_, _) do
-    :error
+    {:error, :unsupported_event}
   end
 end

@@ -10,7 +10,7 @@ defmodule CustodianWeb.WebhookControllerTest do
     {:ok, conn: conn}
   end
 
-  test "returns empty response on receive", %{conn: conn} do
+  test "returns 204 empty response on receive", %{conn: conn} do
     params = %{
       "action" => "created",
       "installation" => %{"id" => 1},
@@ -24,5 +24,17 @@ defmodule CustodianWeb.WebhookControllerTest do
 
     conn = post(conn, webhook_path(conn, :receive), params)
     assert response(conn, 204)
+  end
+
+  test "returns 400 on unsupported event", %{conn: conn} do
+    conn =
+      conn
+      |> put_req_header("x-github-event", "nonsense")
+
+    conn = post(conn, webhook_path(conn, :receive), %{})
+    body = json_response(conn, 400)
+
+    assert body["errors"]["detail"] == "Unsupported event"
+    assert response(conn, 400)
   end
 end

@@ -14,6 +14,6 @@ defmodule Custodian.Github.GithubTest do
   end
 
   test "process_event/2 returns error when event is unhandled" do
-    assert Github.process_event("nonsense", %{}) == :error
+    assert Github.process_event("nonsense", %{}) == {:error, :unsupported_event}
   end
 end

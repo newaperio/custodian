@@ -1,6 +1,10 @@
 defmodule CustodianWeb.ErrorView do
   use CustodianWeb, :view
 
+  def render("400.json", %{error: :unsupported_event}) do
+    %{errors: %{detail: "Unsupported event"}}
+  end
+
   def render("400.json", _assigns) do
     %{errors: %{detail: "Bad request"}}
   end
