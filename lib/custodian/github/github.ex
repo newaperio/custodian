@@ -7,8 +7,8 @@ defmodule Custodian.Github do
 
   import Ecto.Query, warn: false
 
-  alias Custodian.Bots.Bot
   alias Custodian.Github.Processor
+  alias Custodian.Tasks
 
   @typedoc """
   Pull request identifier as a tuple with the repo and integer ID.
@@ -43,16 +43,28 @@ defmodule Custodian.Github do
   [`pull_request`]: https://developer.github.com/v3/activity/events/types/#pullrequestevent
   [`pull_request_review`]: https://developer.github.com/v3/activity/events/types/#pullrequestreviewevent
   """
-  @spec process_event(String.t(), map) :: {:ok, [Bot.t()]} | :error
+  @spec process_event(String.t(), map) :: :ok | {:error, atom}
   def process_event(type, params)
-  def process_event("installation", params), do: Processor.installation(params)
 
-  def process_event("installation_repositories", params) do
-    Processor.installation(params)
+  def process_event("installation", params) do
+    Tasks.process(fn -> Processor.installation(params) end)
+    :ok
   end
 
-  def process_event("pull_request", params), do: Processor.pr(params)
-  def process_event("pull_request_review", params), do: Processor.review(params)
+  def process_event("installation_repositories", params) do
+    Tasks.process(fn -> Processor.installation(params) end)
+    :ok
+  end
+
+  def process_event("pull_request", params) do
+    Tasks.process(fn -> Processor.pr(params) end)
+    :ok
+  end
+
+  def process_event("pull_request_review", params) do
+    Tasks.process(fn -> Processor.review(params) end)
+    :ok
+  end
 
   def process_event(_, _) do
     {:error, :unsupported_event}

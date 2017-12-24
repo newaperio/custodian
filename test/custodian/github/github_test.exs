@@ -10,7 +10,7 @@ defmodule Custodian.Github.GithubTest do
       "repositories" => [%{"full_name" => "lleger/gh-api-test", "id" => 1}]
     }
 
-    assert {:ok, _} = Github.process_event("installation", params)
+    assert :ok = Github.process_event("installation", params)
   end
 
   test "process_event/2 returns error when event is unhandled" do

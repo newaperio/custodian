@@ -21,3 +21,6 @@ config :custodian, :github_key, {:file, "config/github_key.pem"}
 
 # Configures app's GitHub API client
 config :custodian, :github_api, Custodian.Github.Mockcat
+
+# Configures app's task processor
+config :custodian, :processor, Custodian.Tasks.Sync

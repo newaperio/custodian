@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.18.1">
-    <title>CustodianWeb.Router – Custodian v0.0.1</title>
+    <title>Custodian.Tasks – Custodian v0.0.1</title>
     <link rel="stylesheet" href="dist/app-c922dbe7ef.css" />
     
     <script src="dist/sidebar_items-83c8abc59b.js"></script>
@@ -66,15 +66,23 @@
 
       <h1>
         <small class="visible-xs">Custodian v0.0.1</small>
-        CustodianWeb.Router
+        Custodian.Tasks <small>behaviour</small>
         
-          <a href="https://github.com/newaperio/custodian/blob/master/lib/custodian_web/router.ex#L1" title="View Source" class="view-source" rel="help">
+          <a href="https://github.com/newaperio/custodian/blob/master/lib/custodian/tasks/tasks.ex#L1" title="View Source" class="view-source" rel="help">
             <span class="icon-code" aria-hidden="true"></span>
             <span class="sr-only">View Source</span>
           </a>
         
       </h1>
 
+      
+        <section id="moduledoc">
+          <p>Behaviour interface for processing tasks.</p>
+<p>Tasks are encapsulated segments of work that need to be done. They can be
+processed in the background by spawning a new process or synchronously by
+running inline.</p>
+
+        </section>
       
 
       
@@ -87,6 +95,23 @@
             Summary
           </h1>
           
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+    <div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:result/0">result()</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Tuple containing an atom indicating successful startup and the PID of the
+process running the test. Otherwise, returns an error tuple</p>
+</div>
+  
+</div>
+
+  </div>
+
 
           
   <div class="summary-functions summary">
@@ -95,26 +120,10 @@
     </h2>
     <div class="summary-row">
   <div class="summary-signature">
-    <a href="#api/2">api(conn, _)</a>
+    <a href="#process/1">process(fun)</a>
   </div>
   
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#call/2">call(conn, opts)</a>
-  </div>
-  
-    <div class="summary-synopsis"><p>Callback invoked by Plug on every request</p>
-</div>
-  
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#init/1">init(opts)</a>
-  </div>
-  
-    <div class="summary-synopsis"><p>Callback required by Plug that initializes the router
-for serving web requests</p>
+    <div class="summary-synopsis"><p>Runs the given function as a task</p>
 </div>
   
 </div>
@@ -123,10 +132,70 @@ for serving web requests</p>
 
 
           
+  <div class="summary-callbacks summary">
+    <h2>
+      <a href="#callbacks">Callbacks</a>
+    </h2>
+    <div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:process/1">process(fun)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Takes a function and runs the task according to the implementation. Returns
+a success or error tuple</p>
+</div>
+  
+</div>
+
+  </div>
+
 
         </section>
       
 
+      
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Types
+          </h1>
+          <div class="types-list">
+            <div class="detail" id="t:result/0">
+  
+  
+  <div class="detail-header">
+    <a href="#t:result/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <span class="signature">result()</span>
+    
+      <a href="https://github.com/newaperio/custodian/blob/master/lib/custodian/tasks/tasks.ex#L16" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>result() :: {:ok, pid()} | any()</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    <p>Tuple containing an atom indicating successful startup and the PID of the
+process running the test. Otherwise, returns an error tuple.</p>
+
+  </section>
+</div>
+
+          </div>
+        </section>
       
 
       
@@ -138,72 +207,35 @@ for serving web requests</p>
             </a>
             Functions
           </h1>
-          <div class="detail" id="api/2">
+          <div class="detail" id="process/1">
   
   
   <div class="detail-header">
-    <a href="#api/2" class="detail-link" title="Link to this function">
+    <a href="#process/1" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">api(conn, _)</span>
+    <span class="signature">process(fun)</span>
     
-      <a href="https://github.com/newaperio/custodian/blob/master/lib/custodian_web/router.ex#L4" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/newaperio/custodian/blob/master/lib/custodian/tasks/tasks.ex#L32" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
     
     
     
-  </div>
-  <section class="docstring">
-    
-  </section>
-</div>
-<div class="detail" id="call/2">
-  
-  
-  <div class="detail-header">
-    <a href="#call/2" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <span class="signature">call(conn, opts)</span>
-    
-      <a href="https://github.com/newaperio/custodian/blob/master/lib/custodian_web/router.ex#L2" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
-       <span class="sr-only">View Source</span>
-     </a>
-    
-    
+      <div class="specs">
+        
+          <pre>process((() -> any())) :: <a href="#t:result/0">result</a>()</pre>
+        
+      </div>
     
   </div>
   <section class="docstring">
-    <p>Callback invoked by Plug on every request.</p>
-
-  </section>
-</div>
-<div class="detail" id="init/1">
-  
-  
-  <div class="detail-header">
-    <a href="#init/1" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <span class="signature">init(opts)</span>
-    
-      <a href="https://github.com/newaperio/custodian/blob/master/lib/custodian_web/router.ex#L2" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
-       <span class="sr-only">View Source</span>
-     </a>
-    
-    
-    
-  </div>
-  <section class="docstring">
-    <p>Callback required by Plug that initializes the router
-for serving web requests.</p>
+    <p>Runs the given function as a task</p>
+<p>This runs <code class="inline">fun</code> as a task according to the configured processor. For most
+environments, this is asynchronous: a new process is spawned and supervised
+by the app. For some environments, like <code class="inline">test</code>, this is inline.</p>
 
   </section>
 </div>
@@ -211,6 +243,47 @@ for serving web requests.</p>
         </section>
       
 
+      
+        <section id="callbacks" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#callbacks">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Callbacks
+          </h1>
+          <div class="detail" id="c:process/1">
+  
+  
+  <div class="detail-header">
+    <a href="#c:process/1" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <span class="signature">process(fun)</span>
+    
+      <a href="https://github.com/newaperio/custodian/blob/master/lib/custodian/tasks/tasks.ex#L22" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>process(fun :: (() -> any())) :: <a href="#t:result/0">result</a>()</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    <p>Takes a function and runs the task according to the implementation. Returns
+a success or error tuple.</p>
+
+  </section>
+</div>
+
+        </section>
       
           <footer class="footer">
         <p>

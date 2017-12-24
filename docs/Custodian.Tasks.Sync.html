@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.18.1">
-    <title>CustodianWeb.Router – Custodian v0.0.1</title>
+    <title>Custodian.Tasks.Sync – Custodian v0.0.1</title>
     <link rel="stylesheet" href="dist/app-c922dbe7ef.css" />
     
     <script src="dist/sidebar_items-83c8abc59b.js"></script>
@@ -66,15 +66,22 @@
 
       <h1>
         <small class="visible-xs">Custodian v0.0.1</small>
-        CustodianWeb.Router
+        Custodian.Tasks.Sync
         
-          <a href="https://github.com/newaperio/custodian/blob/master/lib/custodian_web/router.ex#L1" title="View Source" class="view-source" rel="help">
+          <a href="https://github.com/newaperio/custodian/blob/master/lib/custodian/tasks/sync.ex#L1" title="View Source" class="view-source" rel="help">
             <span class="icon-code" aria-hidden="true"></span>
             <span class="sr-only">View Source</span>
           </a>
         
       </h1>
 
+      
+        <section id="moduledoc">
+          <p>Provides an implmenetation of the <a href="Custodian.Tasks.html"><code class="inline">Custodian.Tasks</code></a> behaviour.</p>
+<p>This runs the given function inline, immediately processing the task and
+returning the result.</p>
+
+        </section>
       
 
       
@@ -95,26 +102,10 @@
     </h2>
     <div class="summary-row">
   <div class="summary-signature">
-    <a href="#api/2">api(conn, _)</a>
+    <a href="#process/1">process(fun)</a>
   </div>
   
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#call/2">call(conn, opts)</a>
-  </div>
-  
-    <div class="summary-synopsis"><p>Callback invoked by Plug on every request</p>
-</div>
-  
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#init/1">init(opts)</a>
-  </div>
-  
-    <div class="summary-synopsis"><p>Callback required by Plug that initializes the router
-for serving web requests</p>
+    <div class="summary-synopsis"><p>Runs <code class="inline">fun</code> inline and returns the result immediately</p>
 </div>
   
 </div>
@@ -138,72 +129,32 @@ for serving web requests</p>
             </a>
             Functions
           </h1>
-          <div class="detail" id="api/2">
+          <div class="detail" id="process/1">
   
   
   <div class="detail-header">
-    <a href="#api/2" class="detail-link" title="Link to this function">
+    <a href="#process/1" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">api(conn, _)</span>
+    <span class="signature">process(fun)</span>
     
-      <a href="https://github.com/newaperio/custodian/blob/master/lib/custodian_web/router.ex#L4" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/newaperio/custodian/blob/master/lib/custodian/tasks/sync.ex#L14" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
     
     
     
-  </div>
-  <section class="docstring">
-    
-  </section>
-</div>
-<div class="detail" id="call/2">
-  
-  
-  <div class="detail-header">
-    <a href="#call/2" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <span class="signature">call(conn, opts)</span>
-    
-      <a href="https://github.com/newaperio/custodian/blob/master/lib/custodian_web/router.ex#L2" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
-       <span class="sr-only">View Source</span>
-     </a>
-    
-    
+      <div class="specs">
+        
+          <pre>process((() -> any())) :: any()</pre>
+        
+      </div>
     
   </div>
   <section class="docstring">
-    <p>Callback invoked by Plug on every request.</p>
-
-  </section>
-</div>
-<div class="detail" id="init/1">
-  
-  
-  <div class="detail-header">
-    <a href="#init/1" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <span class="signature">init(opts)</span>
-    
-      <a href="https://github.com/newaperio/custodian/blob/master/lib/custodian_web/router.ex#L2" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
-       <span class="sr-only">View Source</span>
-     </a>
-    
-    
-    
-  </div>
-  <section class="docstring">
-    <p>Callback required by Plug that initializes the router
-for serving web requests.</p>
+    <p>Runs <code class="inline">fun</code> inline and returns the result immediately.</p>
 
   </section>
 </div>

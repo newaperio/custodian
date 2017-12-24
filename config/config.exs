@@ -35,6 +35,9 @@ config :tentacat, :extra_headers, [{"Accept", "application/vnd.github.machine-ma
 # Configures app's GitHub API client
 config :custodian, :github_api, Custodian.Github.Tentacat
 
+# Configures app's task processor
+config :custodian, :processor, Custodian.Tasks.Async
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"

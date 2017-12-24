@@ -12,7 +12,7 @@ defmodule CustodianWeb.WebhookController do
   def receive(conn, params) do
     Appsignal.increment_counter("webhook_count", 1)
 
-    with {:ok, _bots} <- Github.process_event(event(conn), params) do
+    with :ok <- Github.process_event(event(conn), params) do
       send_resp(conn, :no_content, "")
     end
   end

@@ -12,7 +12,9 @@ defmodule Custodian.Application do
       # Start the Ecto repository
       supervisor(Custodian.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(CustodianWeb.Endpoint, [])
+      supervisor(CustodianWeb.Endpoint, []),
+      # Start supervisor for background processes
+      supervisor(Task.Supervisor, [[name: Custodian.TaskSupervisor, restart: :transient]])
       # Start your own worker by calling: Custodian.Worker.start_link(arg1, arg2, arg3)
       # worker(Custodian.Worker, [arg1, arg2, arg3]),
     ]
