@@ -1,0 +1,485 @@
+    <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.18.1">
+    <title>Custodian.Bots – Custodian v0.0.1</title>
+    <link rel="stylesheet" href="dist/app-c922dbe7ef.css" />
+    
+    <script src="dist/sidebar_items-e5a40fc2f3.js"></script>
+    
+    
+    
+    
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+
+    <div class="main">
+<button class="sidebar-toggle">
+  <span class="icon-menu" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Sidebar</span>
+</button>
+<section class="sidebar">
+
+  
+  <a href="readme.html" class="sidebar-projectLink">
+    <div class="sidebar-projectDetails">
+      <h1 class="sidebar-projectName">
+        Custodian
+      </h1>
+      <h2 class="sidebar-projectVersion">
+        v0.0.1
+      </h2>
+    </div>
+    
+  </a>
+
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <input name="q" type="text" id="search-list" class="search-input" placeholder="search" aria-label="Search" autocomplete="off" />
+  </form>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+    
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+    
+
+    
+
+    
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+      <h1>
+        <small class="visible-xs">Custodian v0.0.1</small>
+        Custodian.Bots
+        
+          <a href="https://github.com/newaperio/custodian/blob/master/lib/custodian/bots/bots.ex#L1" title="View Source" class="view-source" rel="help">
+            <span class="icon-code" aria-hidden="true"></span>
+            <span class="sr-only">View Source</span>
+          </a>
+        
+      </h1>
+
+      
+        <section id="moduledoc">
+          <p>The Bots context provides a boundary into the <a href="Custodian.Bots.Bot.html"><code class="inline">Custodian.Bots.Bot</code></a> schema. It
+provides functions for listing, creating, updating, and deleting bots.</p>
+
+        </section>
+      
+
+      
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+          
+
+          
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+    <div class="summary-row">
+  <div class="summary-signature">
+    <a href="#change_bot/1">change_bot(bot)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Returns an <code class="inline">%Ecto.Changeset{}</code> for tracking bot changes</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#create_bot/1">create_bot(attrs \\ %{})</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Creates a bot</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete_bot/1">delete_bot(bot)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Deletes a Bot</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_bot!/1">get_bot!(id)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Gets a single bot</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_bot_by!/1">get_bot_by!(clauses)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Gets a single bot by some clause</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#list_bots/0">list_bots()</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Returns the list of bots</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#update_bot/2">update_bot(bot, attrs)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Updates a bot</p>
+</div>
+  
+</div>
+
+  </div>
+
+
+          
+
+        </section>
+      
+
+      
+
+      
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Functions
+          </h1>
+          <div class="detail" id="change_bot/1">
+  
+  
+  <div class="detail-header">
+    <a href="#change_bot/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">change_bot(bot)</span>
+    
+      <a href="https://github.com/newaperio/custodian/blob/master/lib/custodian/bots/bots.ex#L125" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>change_bot(<a href="Custodian.Bots.Bot.html#t:t/0">Custodian.Bots.Bot.t</a>()) :: <a href="https://hexdocs.pm/ecto/2.2.7/Ecto.Changeset.html#t:t/0">Ecto.Changeset.t</a>()</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    <p>Returns an <code class="inline">%Ecto.Changeset{}</code> for tracking bot changes.</p>
+<h2 id="change_bot/1-examples" class="section-heading">
+  <a href="#change_bot/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="iex elixir">iex&gt; change_bot(bot)
+%Ecto.Changeset{source: %Bot{}}</code></pre>
+
+  </section>
+</div>
+<div class="detail" id="create_bot/1">
+  
+  
+    <span id="create_bot/0"></span>
+  
+  <div class="detail-header">
+    <a href="#create_bot/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">create_bot(attrs \\ %{})</span>
+    
+      <a href="https://github.com/newaperio/custodian/blob/master/lib/custodian/bots/bots.ex#L73" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>create_bot(map()) :: <a href="Custodian.Bots.Bot.html#t:t/0">Custodian.Bots.Bot.t</a>()</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    <p>Creates a bot.</p>
+<h2 id="create_bot/1-examples" class="section-heading">
+  <a href="#create_bot/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="iex elixir">iex&gt; create_bot(%{field: value})
+{:ok, %Bot{}}
+
+iex&gt; create_bot(%{field: bad_value})
+{:error, %Ecto.Changeset{}}</code></pre>
+
+  </section>
+</div>
+<div class="detail" id="delete_bot/1">
+  
+  
+  <div class="detail-header">
+    <a href="#delete_bot/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">delete_bot(bot)</span>
+    
+      <a href="https://github.com/newaperio/custodian/blob/master/lib/custodian/bots/bots.ex#L111" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>delete_bot(<a href="Custodian.Bots.Bot.html#t:t/0">Custodian.Bots.Bot.t</a>()) :: <a href="Custodian.Bots.Bot.html#t:t/0">Custodian.Bots.Bot.t</a>()</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    <p>Deletes a Bot.</p>
+<h2 id="delete_bot/1-examples" class="section-heading">
+  <a href="#delete_bot/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="iex elixir">iex&gt; delete_bot(bot)
+{:ok, %Bot{}}
+
+iex&gt; delete_bot(bot)
+{:error, %Ecto.Changeset{}}</code></pre>
+
+  </section>
+</div>
+<div class="detail" id="get_bot!/1">
+  
+  
+  <div class="detail-header">
+    <a href="#get_bot!/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">get_bot!(id)</span>
+    
+      <a href="https://github.com/newaperio/custodian/blob/master/lib/custodian/bots/bots.ex#L41" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>get_bot!(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="Custodian.Bots.Bot.html#t:t/0">Custodian.Bots.Bot.t</a>()</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    <p>Gets a single bot.</p>
+<p>Raises <a href="https://hexdocs.pm/ecto/2.2.7/Ecto.NoResultsError.html"><code class="inline">Ecto.NoResultsError</code></a> if the bot does not exist.</p>
+<h2 id="get_bot!/1-examples" class="section-heading">
+  <a href="#get_bot!/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="iex elixir">iex&gt; get_bot!(123)
+%Bot{}
+
+iex&gt; get_bot!(456)
+** (Ecto.NoResultsError)</code></pre>
+
+  </section>
+</div>
+<div class="detail" id="get_bot_by!/1">
+  
+  
+  <div class="detail-header">
+    <a href="#get_bot_by!/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">get_bot_by!(clauses)</span>
+    
+      <a href="https://github.com/newaperio/custodian/blob/master/lib/custodian/bots/bots.ex#L58" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>get_bot_by!(<a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>()) :: <a href="Custodian.Bots.Bot.html#t:t/0">Custodian.Bots.Bot.t</a>()</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    <p>Gets a single bot by some clause.</p>
+<p>Raises <a href="https://hexdocs.pm/ecto/2.2.7/Ecto.NoResultsError.html"><code class="inline">Ecto.NoResultsError</code></a> if the bot does not exist.</p>
+<h2 id="get_bot_by!/1-examples" class="section-heading">
+  <a href="#get_bot_by!/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="iex elixir">iex&gt; get_bot_by!(repo_id: 123)
+%Bot{}
+
+iex&gt; get_bot_by!(repo_id: 456)
+** (Ecto.NoResultsError)</code></pre>
+
+  </section>
+</div>
+<div class="detail" id="list_bots/0">
+  
+  
+  <div class="detail-header">
+    <a href="#list_bots/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">list_bots()</span>
+    
+      <a href="https://github.com/newaperio/custodian/blob/master/lib/custodian/bots/bots.ex#L22" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>list_bots() :: [<a href="Custodian.Bots.Bot.html#t:t/0">Custodian.Bots.Bot.t</a>()]</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    <p>Returns the list of bots.</p>
+<h2 id="list_bots/0-examples" class="section-heading">
+  <a href="#list_bots/0-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="iex elixir">iex&gt; list_bots()
+[%Bot{}, ...]</code></pre>
+
+  </section>
+</div>
+<div class="detail" id="update_bot/2">
+  
+  
+  <div class="detail-header">
+    <a href="#update_bot/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">update_bot(bot, attrs)</span>
+    
+      <a href="https://github.com/newaperio/custodian/blob/master/lib/custodian/bots/bots.ex#L92" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>update_bot(<a href="Custodian.Bots.Bot.html#t:t/0">Custodian.Bots.Bot.t</a>(), map()) :: <a href="Custodian.Bots.Bot.html#t:t/0">Custodian.Bots.Bot.t</a>()</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    <p>Updates a bot.</p>
+<h2 id="update_bot/2-examples" class="section-heading">
+  <a href="#update_bot/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="iex elixir">iex&gt; update_bot(bot, %{field: new_value})
+{:ok, %Bot{}}
+
+iex&gt; update_bot(bot, %{field: bad_value})
+{:error, %Ecto.Changeset{}}</code></pre>
+
+  </section>
+</div>
+
+        </section>
+      
+
+      
+          <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.18.1),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+        <button class="night-mode-toggle"><span class="sr-only">Switch theme</span></button>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  <script src="dist/app-778c9ef903.js"></script>
+  
+  
+  
+  
+  </body>
+</html>
+
