@@ -180,7 +180,7 @@ token</p>
     </a>
     <span class="signature">installation(installation_id)</span>
     
-      <a href="https://github.com/newaperio/custodian/blob/master/lib/custodian/github/tentacat/client.ex#L43" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/newaperio/custodian/blob/master/lib/custodian/github/tentacat/client.ex#L47" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -199,6 +199,9 @@ token</p>
 token.</p>
 <p>This token is created for a specific installation of the app. Useful for
 taking action on specific repos. <a href="https://developer.github.com/apps/building-github-apps/authentication-options-for-github-apps/#authenticating-as-an-installation" title="">More info</a>.</p>
+<p>The token is cached in memory using Erlang’s ETS. This allows it to be shared
+by other processes. Each token GitHub generates is good for 60 minutes. We
+set the TTL to 55 minutes to ensure we’re grabbing a fresh one before then.</p>
 
   </section>
 </div>

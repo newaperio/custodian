@@ -25,7 +25,7 @@ defmodule Custodian.Mixfile do
   def application do
     [
       mod: {Custodian.Application, []},
-      extra_applications: [:appsignal, :logger, :runtime_tools]
+      extra_applications: [:appsignal, :logger, :runtime_tools, :con_cache]
     ]
   end
 
@@ -39,6 +39,7 @@ defmodule Custodian.Mixfile do
   defp deps do
     [
       {:appsignal, "~> 1.0"},
+      {:con_cache, "~> 0.12.1"},
       {:cowboy, "~> 1.0"},
       {:credo, "~> 0.5", only: [:dev, :test]},
       {:dialyxir, "~> 0.5.1"},

@@ -37,11 +37,19 @@ defmodule Custodian.Github.Tentacat.Client do
   This token is created for a specific installation of the app. Useful for
   taking action on specific repos. [More info].
 
+  The token is cached in memory using Erlang's ETS. This allows it to be shared
+  by other processes. Each token GitHub generates is good for 60 minutes. We
+  set the TTL to 55 minutes to ensure we're grabbing a fresh one before then.
+
   [More info]: https://developer.github.com/apps/building-github-apps/authentication-options-for-github-apps/#authenticating-as-an-installation
   """
   @spec installation(integer) :: struct
   def installation(installation_id) do
-    {201, %{"token" => token}} = Installations.token(installation_id, app())
+    token =
+      ConCache.get_or_store(:token_cache, installation_id, fn ->
+        {201, %{"token" => token}} = Installations.token(installation_id, app())
+        token
+      end)
 
     Client.new(%{access_token: token})
   end

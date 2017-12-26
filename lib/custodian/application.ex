@@ -14,7 +14,15 @@ defmodule Custodian.Application do
       # Start the endpoint when the application starts
       supervisor(CustodianWeb.Endpoint, []),
       # Start supervisor for background processes
-      supervisor(Task.Supervisor, [[name: Custodian.TaskSupervisor, restart: :transient]])
+      supervisor(Task.Supervisor, [[name: Custodian.TaskSupervisor, restart: :transient]]),
+      # Start supervisor for ConCache with 55 min TTL
+      supervisor(ConCache, [
+        [
+          ttl_check_interval: :timer.seconds(1),
+          global_ttl: :timer.seconds(3_300)
+        ],
+        [name: :token_cache]
+      ])
       # Start your own worker by calling: Custodian.Worker.start_link(arg1, arg2, arg3)
       # worker(Custodian.Worker, [arg1, arg2, arg3]),
     ]
