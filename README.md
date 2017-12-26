@@ -55,6 +55,11 @@ This generates an HTML version available in the `doc/` folder. Open to view:
 
     % open docs/index.html
 
+To publish changes to the docs hosted on GitHub Pages, run the update script from master:
+
+    % git checkout master
+    % ./bin/update-docs
+
 ### Testing
 
 This project uses Test-Driven Development. For any new feature, tests should be written to verify appropriate behavior. We prefer to avoid testing framework, project, or library behavior and instead focus on testing the business logic of the app.

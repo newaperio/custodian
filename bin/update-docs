@@ -1,0 +1,8 @@
+git checkout gh-pages
+git rm -rf .
+git checkout HEAD .gitignore .nojekyll
+mv doc/* ./
+git add .
+git commit -m "[Bot] Update docs"
+git push
+git checkout master
