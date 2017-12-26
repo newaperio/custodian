@@ -16,3 +16,6 @@ erl_crash.dump
 # variables.
 /config/*.secret.exs
 /config/github_key.pem
+
+# Generated docs
+/doc

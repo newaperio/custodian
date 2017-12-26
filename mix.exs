@@ -72,8 +72,7 @@ defmodule Custodian.Mixfile do
   defp docs do
     [
       main: "readme",
-      extras: ["README.md": [title: "README"]],
-      output: "docs"
+      extras: ["README.md": [title: "README"]]
     ]
   end
 end
