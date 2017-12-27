@@ -18,8 +18,8 @@ defmodule Custodian.Application do
       # Start supervisor for ConCache with 55 min TTL
       supervisor(ConCache, [
         [
-          ttl_check_interval: :timer.seconds(1),
-          global_ttl: :timer.seconds(3_300)
+          ttl_check: :timer.seconds(1),
+          ttl: :timer.seconds(3_300)
         ],
         [name: :token_cache]
       ])
