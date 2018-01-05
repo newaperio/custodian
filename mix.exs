@@ -54,6 +54,7 @@ defmodule Custodian.Mixfile do
       {:ex_doc, "~> 0.14", only: :dev, runtime: false},
       {:inch_ex, "~> 0.5", only: [:dev, :test]},
       {:jose, "~> 1.8"},
+      {:junit_formatter, "~> 2.0", only: [:test]},
       {:phoenix, github: "phoenixframework/phoenix", ref: "7af99b6", override: true},
       {:phoenix_ecto, "~> 3.2"},
       {:postgrex, ">= 0.0.0"},
