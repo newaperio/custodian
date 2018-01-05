@@ -24,3 +24,10 @@ config :custodian, :github_api, Custodian.Github.Mockcat
 
 # Configures app's task processor
 config :custodian, :processor, Custodian.Tasks.Sync
+
+# Configure CI test formatter
+if System.get_env("CI") do
+  config :junit_formatter,
+    report_dir: "#{Path.expand(System.get_env("CIRCLE_WORKING_DIRECTORY"))}/reports",
+    print_report_file: true
+end
