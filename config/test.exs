@@ -17,7 +17,7 @@ config :custodian, Custodian.Repo,
   pool: Ecto.Adapters.SQL.Sandbox
 
 # Configure Github API private key
-config :custodian, :github_key, {:file, "config/github_key.pem"}
+config :custodian, :github_key, {:file, "test/support/github_key.pem"}
 
 # Configures app's GitHub API client
 config :custodian, :github_api, Custodian.Github.Mockcat

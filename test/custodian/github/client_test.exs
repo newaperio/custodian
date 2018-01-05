@@ -7,11 +7,11 @@ defmodule Custodian.Github.ClientTest do
     """
     eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.
     eyJleHAiOjE1MTM4ODMwMjEsImlhdCI6MTUxMzg4MjQyMSwiaXNzIjoiNzUyOCJ9.
-    nIBkLiU-w2eh4QntkQ8WmE-qsYmvDd9a-O9VvUMSpyKddndkz2xpMF9b3UnV-uQXuQ6ag45ap_HG
-    2eBpGWclVPUV7vDk-oX-DmM7DLJ_8woCvdNnc3jUDhGW7OG9ajIGmK0o5fhZ8bqWHaUJofF0J-V9
-    oCCeqV9Gfyu2CLKqC02PFfCLx3PvCMVsijEiylnXGjFUQNgf-erhVVH6R5z6q-JGFQ3P7Eqla8Qm
-    VMleG6980dSXlF3HlKZTSEJLoI9iofEjGgB72C8vPz_XYV_WshNgqEffGqjHEGGFx9hO69FniHA8
-    3NZlRp80R7-xcQpBZftN9hRjSvx7TJoySj1YBQ
+    Z_SM2dep79JS-VCADZIHQNK6s8xjHgiFOtSAtiLbQBdo-ozyw7jsn3kWRqIu4GtTKVsLd97p4sDp
+    4hJjEPhkBouG5iGZ1usM8UivzaXfYam1ikgncocVPa2fe1rHrQTIjHyX_5sV9EdsNYKrxrygs5p3
+    -OoL6bAoaRpwlN80Spzmcof9VhjQWxS33tofOx7DBlIX-GqZmUf1AW_4qGL9moYSlmzB9VoVuonu
+    s24Pbo8_Hnvo9Qh5mkl1iGOWLWGERVT5_Jw3fZg1bXgSYTKstpX_UTh8JSYhMB1uWHPFq1nsd8hy
+    29Pb6ssRcfDkEMXoKSKy3_QDjX1KWmyEGYnZxQ
     """
     |> String.replace("\n", "")
   end
