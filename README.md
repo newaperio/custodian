@@ -1,5 +1,9 @@
 # Custodian
 
+[![CircleCI](https://circleci.com/gh/newaperio/custodian.svg?style=svg&circle-token=d6eef87c41aeca470ddce3947d62d87cc34d5e15)](https://circleci.com/gh/newaperio/custodian)
+[![Maintainability](https://api.codeclimate.com/v1/badges/436e332fef1f1ec800d4/maintainability)](https://codeclimate.com/github/newaperio/custodian/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/436e332fef1f1ec800d4/test_coverage)](https://codeclimate.com/github/newaperio/custodian/test_coverage)
+
 Custodian is an opinionated GitHub bot to automate routine development tasks. It was built by [NewAperio](https://newaperio.com) and is designed to follow our conventions.
 
 Currently, Custodian performs the following functions:
