@@ -1,0 +1,20 @@
+engines:
+  credo:
+    enabled: true
+    channel: "beta"
+  fixme:
+    enabled: true
+  markdownlint:
+    enabled: true
+    checks:
+      MD013:
+        enabled: false
+ratings:
+  paths:
+  - "**.ex"
+  - "**.exs"
+  - "**.md"
+exclude_paths:
+- priv/repo/
+- test/
+- config/
