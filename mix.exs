@@ -15,7 +15,14 @@ defmodule Custodian.Mixfile do
       name: "Custodian",
       source_url: "https://github.com/newaperio/custodian",
       source_root: ".",
-      docs: docs()
+      docs: docs(),
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.html": :test,
+        "coveralls.json": :test
+      ]
     ]
   end
 
@@ -43,11 +50,12 @@ defmodule Custodian.Mixfile do
       {:cowboy, "~> 1.0"},
       {:credo, "~> 0.5", only: [:dev, :test]},
       {:dialyxir, "~> 0.5.1"},
+      {:excoveralls, "~> 0.8", only: :test},
       {:ex_doc, "~> 0.14", only: :dev, runtime: false},
       {:inch_ex, "~> 0.5", only: [:dev, :test]},
       {:jose, "~> 1.8"},
-      {:phoenix_ecto, "~> 3.2"},
       {:phoenix, github: "phoenixframework/phoenix", ref: "7af99b6", override: true},
+      {:phoenix_ecto, "~> 3.2"},
       {:postgrex, ">= 0.0.0"},
       {:sobelow, "~> 0.3", only: [:dev]},
       {:tentacat, github: "edgurgel/tentacat"}
