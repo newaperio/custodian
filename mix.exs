@@ -57,7 +57,7 @@ defmodule Custodian.Mixfile do
       {:phoenix, github: "phoenixframework/phoenix", ref: "7af99b6", override: true},
       {:phoenix_ecto, "~> 3.2"},
       {:postgrex, ">= 0.0.0"},
-      {:sobelow, "~> 0.3", only: [:dev]},
+      {:sobelow, "~> 0.3", only: [:dev, :test]},
       {:tentacat, github: "edgurgel/tentacat"}
     ]
   end
