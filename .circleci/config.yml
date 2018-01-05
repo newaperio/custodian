@@ -1,0 +1,72 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/custodian
+    docker:
+      - image: newaperio/elixir-circleci:0.0.1
+        environment:
+          PGUSER: root
+      - image: postgres:10.1
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: custodian_test
+    steps:
+      - checkout
+
+      - type: cache-restore
+        name: Restore build cache
+        key: v1-build-{{ .Branch }}
+
+      - type: cache-restore
+        name: Restore Mix cache
+        key: v1-mix-{{ .Branch }}-{{ checksum "mix.lock" }}
+
+      - run:
+          name: Install and compile dependencies
+          command: mix do deps.get, deps.compile
+
+      - type: cache-save
+        name: Save Mix cache
+        key: v1-mix-{{ .Branch }}-{{ checksum "mix.lock" }}
+        paths:
+          - deps
+
+      - run:
+          name: Compile app
+          command: mix compile --warnings-as-errors
+
+      - type: cache-save
+        name: Save build cache
+        key: v1-build-{{ .Branch }}
+        paths:
+          - _build
+
+      - run:
+          name: Wait for Postgres
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      - run:
+          name: Database setup
+          command: mix ecto.load
+
+      - run:
+          name: Run Sobelow to check security
+          command: mix sobelow --exit Low --skip
+
+      - run:
+          name: Run test suite
+          command: |
+            mkdir -p ./reports
+            cc-test-reporter before-build
+            mix coveralls.json
+
+      - run:
+          name: Report code coverage to Code Climate
+          command: |
+            cc-test-reporter after-build --exit-code $?
+
+      - type: store_artifacts
+        path: ./cover
+
+      - type: store_test_results
+        path: ./reports
