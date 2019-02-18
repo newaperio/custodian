@@ -40,7 +40,7 @@ defmodule Custodian.Github.Processor do
     create_bots(params["installation"]["id"], params["repositories_added"])
   end
 
-  def installation(%{"action" => "deleted"} = params) do
+  def installation(%{"action" => "removed"} = params) do
     Appsignal.increment_counter("event_installation_deleted_count", 1)
     Appsignal.increment_counter("bot_count", -1)
     bot = Bots.get_bot_by!(installation_id: params["installation"]["id"])
