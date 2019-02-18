@@ -6,12 +6,12 @@ defmodule Custodian.Github.LabelsTest do
   @github Application.get_env(:custodian, :github_api)
 
   @repo {
-          %Bot{
-            owner: "lleger",
-            name: "gh-api-test"
-          },
-          1
-        }
+    %Bot{
+      owner: "lleger",
+      name: "gh-api-test"
+    },
+    1
+  }
 
   test "returns list of all labels" do
     assert @github.Labels.all(@repo) == ["needs-review", "in-progress"]

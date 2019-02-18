@@ -10,7 +10,8 @@ defmodule Custodian.Github.WebhookPlug do
     ["sha1=" <> header] = get_req_header(conn, "x-hub-signature")
     {:ok, body, _} = read_body(conn)
 
-    signature = :sha |> :crypto.hmac(secret, body) |> Base.encode16(case: :lower)
+    signature =
+      :sha |> :crypto.hmac(secret, body) |> Base.encode16(case: :lower)
 
     if Plug.Crypto.secure_compare(signature, header) do
       conn
