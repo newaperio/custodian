@@ -83,6 +83,7 @@ defmodule Custodian.Github.ProcessorTest do
     })
 
     params = %{
+      "action" => "opened",
       "repository" => %{
         "id" => 1
       },
@@ -105,6 +106,7 @@ defmodule Custodian.Github.ProcessorTest do
     })
 
     params = %{
+      "action" => "opened",
       "repository" => %{
         "id" => 1
       },
@@ -128,6 +130,7 @@ defmodule Custodian.Github.ProcessorTest do
     })
 
     params = %{
+      "action" => "closed",
       "repository" => %{
         "id" => 1
       },
@@ -152,6 +155,7 @@ defmodule Custodian.Github.ProcessorTest do
     })
 
     params = %{
+      "action" => "reopened",
       "repository" => %{
         "id" => 1
       },

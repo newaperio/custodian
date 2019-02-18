@@ -68,7 +68,7 @@ defmodule Custodian.Github.Processor do
   - Removes all labels
   """
   @spec pr(map) :: {:ok, Bot.t()}
-  def pr(%{"pull_request" => %{"state" => "open", "draft" => true}} = params) do
+  def pr(%{"action" => "opened", "pull_request" => %{"draft" => true}} = params) do
     Appsignal.increment_counter("event_pr_open_count", 1)
     bot = Bots.get_bot_by!(repo_id: params["repository"]["id"])
 
@@ -84,7 +84,7 @@ defmodule Custodian.Github.Processor do
     {:ok, bot}
   end
 
-  def pr(%{"pull_request" => %{"state" => "open"}} = params) do
+  def pr(%{"action" => "opened"} = params) do
     Appsignal.increment_counter("event_pr_open_count", 1)
     bot = Bots.get_bot_by!(repo_id: params["repository"]["id"])
 
@@ -100,7 +100,7 @@ defmodule Custodian.Github.Processor do
     {:ok, bot}
   end
 
-  def pr(%{"pull_request" => %{"state" => "closed"}} = params) do
+  def pr(%{"action" => "closed"} = params) do
     Appsignal.increment_counter("event_pr_closed_count", 1)
     bot = Bots.get_bot_by!(repo_id: params["repository"]["id"])
     branch = params["pull_request"]["head"]["ref"]
@@ -115,7 +115,7 @@ defmodule Custodian.Github.Processor do
     {:ok, bot}
   end
 
-  def pr(%{"pull_request" => %{"state" => "reopened"}} = params) do
+  def pr(%{"action" => "reopened"} = params) do
     Appsignal.increment_counter("event_pr_reopened_count", 1)
     bot = Bots.get_bot_by!(repo_id: params["repository"]["id"])
 
