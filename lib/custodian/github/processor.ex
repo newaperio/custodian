@@ -68,6 +68,22 @@ defmodule Custodian.Github.Processor do
   - Removes all labels
   """
   @spec pr(map) :: {:ok, Bot.t()}
+  def pr(%{"pull_request" => %{"state" => "open", "draft" => true}} = params) do
+    Appsignal.increment_counter("event_pr_open_count", 1)
+    bot = Bots.get_bot_by!(repo_id: params["repository"]["id"])
+
+    labels = @github.Labels.all({bot, params["pull_request"]["number"]})
+
+    if !Enum.member?(labels, "ready-to-merge") && !Enum.member?(labels, "needs-review") do
+      @github.Labels.add(
+        {bot, params["pull_request"]["number"]},
+        "in-progress"
+      )
+    end
+
+    {:ok, bot}
+  end
+
   def pr(%{"pull_request" => %{"state" => "open"}} = params) do
     Appsignal.increment_counter("event_pr_open_count", 1)
     bot = Bots.get_bot_by!(repo_id: params["repository"]["id"])
