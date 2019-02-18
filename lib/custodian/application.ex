@@ -14,7 +14,9 @@ defmodule Custodian.Application do
       # Start the endpoint when the application starts
       supervisor(CustodianWeb.Endpoint, []),
       # Start supervisor for background processes
-      supervisor(Task.Supervisor, [[name: Custodian.TaskSupervisor, restart: :transient]]),
+      supervisor(Task.Supervisor, [
+        [name: Custodian.TaskSupervisor, restart: :transient]
+      ]),
       # Start supervisor for ConCache with 55 min TTL
       supervisor(ConCache, [
         [

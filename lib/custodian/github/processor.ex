@@ -74,7 +74,8 @@ defmodule Custodian.Github.Processor do
 
     labels = @github.Labels.all({bot, params["pull_request"]["number"]})
 
-    if !Enum.member?(labels, "ready-to-merge") && !Enum.member?(labels, "needs-review") do
+    if !Enum.member?(labels, "ready-to-merge") &&
+         !Enum.member?(labels, "needs-review") do
       @github.Labels.add(
         {bot, params["pull_request"]["number"]},
         "in-progress"
@@ -90,7 +91,8 @@ defmodule Custodian.Github.Processor do
 
     labels = @github.Labels.all({bot, params["pull_request"]["number"]})
 
-    if !Enum.member?(labels, "ready-to-merge") && !Enum.member?(labels, "in-progress") do
+    if !Enum.member?(labels, "ready-to-merge") &&
+         !Enum.member?(labels, "in-progress") do
       @github.Labels.add(
         {bot, params["pull_request"]["number"]},
         "needs-review"

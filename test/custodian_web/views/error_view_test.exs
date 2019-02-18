@@ -5,7 +5,9 @@ defmodule CustodianWeb.ErrorViewTest do
   import Phoenix.View
 
   test "renders 400.json with unsupported event" do
-    assert render(CustodianWeb.ErrorView, "400.json", %{error: :unsupported_event}) == %{
+    assert render(CustodianWeb.ErrorView, "400.json", %{
+             error: :unsupported_event
+           }) == %{
              errors: %{detail: "Unsupported event"}
            }
   end
