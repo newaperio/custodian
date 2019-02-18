@@ -66,7 +66,7 @@ defmodule Custodian.Github.ProcessorTest do
     })
 
     params = %{
-      "action" => "deleted",
+      "action" => "removed",
       "installation" => %{"id" => 1}
     }
 
