@@ -55,6 +55,11 @@ defmodule Custodian.Github.Processor do
 
   - Adds `needs-review` label unless `ready-to-merge`/`in-progress`
 
+  ## Opened (draft)
+  Processes an "opened" draft pull request.
+
+  - Adds `in-progress` label unless `needs-review`/`ready-to-merge`
+
   ## Closed
   Processes a **closed** pull request. This is either a merged PR or one that
   was closed manually.
@@ -128,6 +133,8 @@ defmodule Custodian.Github.Processor do
 
     {:ok, bot}
   end
+
+  def pr(_), do: :ok
 
   @doc """
   Processes pull request review events.
