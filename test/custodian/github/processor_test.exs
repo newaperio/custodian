@@ -96,6 +96,29 @@ defmodule Custodian.Github.ProcessorTest do
     assert_received {:add, ["needs-review"]}
   end
 
+  test "labels draft pr when opened" do
+    Bots.create_bot(%{
+      repo_id: 1,
+      owner: "lleger",
+      name: "gh-api-test",
+      installation_id: 1
+    })
+
+    params = %{
+      "repository" => %{
+        "id" => 1
+      },
+      "pull_request" => %{
+        "number" => "open",
+        "state" => "open",
+        "draft" => true
+      }
+    }
+
+    assert {:ok, bot} = Processor.pr(params)
+    assert_received {:add, ["in-progress"]}
+  end
+
   test "labels pr when closed" do
     Bots.create_bot(%{
       repo_id: 1,
