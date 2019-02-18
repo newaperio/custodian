@@ -1,6 +1,24 @@
 defmodule Custodian.Github.Mockcat.Labels do
   @behaviour Custodian.Github.Labels
 
+  def all({_, "open"}) do
+    send(self(), :list)
+
+    []
+  end
+
+  def all({_, "close"}) do
+    send(self(), :list)
+
+    ["needs-review", "in-progress", "ready-to-merge"]
+  end
+
+  def all({_, "reopen"}) do
+    send(self(), :list)
+
+    ["needs-review", "in-progress", "ready-to-merge"]
+  end
+
   def all(_) do
     send(self(), :list)
 

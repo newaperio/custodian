@@ -73,4 +73,74 @@ defmodule Custodian.Github.ProcessorTest do
     assert {:ok, bot} = Processor.installation(params)
     assert_raise Ecto.NoResultsError, fn -> Bots.get_bot!(bot.id) end
   end
+
+  test "labels pr when opened" do
+    Bots.create_bot(%{
+      repo_id: 1,
+      owner: "lleger",
+      name: "gh-api-test",
+      installation_id: 1
+    })
+
+    params = %{
+      "repository" => %{
+        "id" => 1
+      },
+      "pull_request" => %{
+        "number" => "open",
+        "state" => "open"
+      }
+    }
+
+    assert {:ok, bot} = Processor.pr(params)
+    assert_received {:add, ["needs-review"]}
+  end
+
+  test "labels pr when closed" do
+    Bots.create_bot(%{
+      repo_id: 1,
+      owner: "lleger",
+      name: "gh-api-test",
+      installation_id: 1
+    })
+
+    params = %{
+      "repository" => %{
+        "id" => 1
+      },
+      "pull_request" => %{
+        "number" => "close",
+        "state" => "closed"
+      }
+    }
+
+    assert {:ok, bot} = Processor.pr(params)
+    assert_received {:remove, "needs-review"}
+    assert_received {:remove, "in-progress"}
+    assert_received {:remove, "ready-to-merge"}
+  end
+
+  test "labels pr when reopened" do
+    Bots.create_bot(%{
+      repo_id: 1,
+      owner: "lleger",
+      name: "gh-api-test",
+      installation_id: 1
+    })
+
+    params = %{
+      "repository" => %{
+        "id" => 1
+      },
+      "pull_request" => %{
+        "number" => "reopen",
+        "state" => "closed"
+      }
+    }
+
+    assert {:ok, bot} = Processor.pr(params)
+    assert_received {:remove, "needs-review"}
+    assert_received {:remove, "in-progress"}
+    assert_received {:remove, "ready-to-merge"}
+  end
 end
