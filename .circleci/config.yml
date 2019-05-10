@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/custodian
     docker:
-      - image: newaperio/elixir-circleci:0.0.1
+      - image: newaperio/elixir-circleci:1.5.3
         environment:
           PGUSER: root
       - image: postgres:10.1
