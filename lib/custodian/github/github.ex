@@ -66,6 +66,11 @@ defmodule Custodian.Github do
     :ok
   end
 
+  def process_event("repository", params) do
+    Tasks.process(fn -> Processor.repo(params) end)
+    :ok
+  end
+
   def process_event(_, _) do
     {:error, :unsupported_event}
   end

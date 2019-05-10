@@ -170,4 +170,24 @@ defmodule Custodian.Github.ProcessorTest do
     assert_received {:remove, "in-progress"}
     assert_received {:remove, "ready-to-merge"}
   end
+
+  test "updates bot when repo renamed" do
+    Bots.create_bot(%{
+      repo_id: 1,
+      owner: "lleger",
+      name: "gh-api-test",
+      installation_id: 1
+    })
+
+    params = %{
+      "action" => "renamed",
+      "repository" => %{
+        "id" => 1,
+        "name" => "gh-api-test1"
+      }
+    }
+
+    assert {:ok, bot} = Processor.repo(params)
+    assert bot.name == "gh-api-test1"
+  end
 end
