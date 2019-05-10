@@ -26,8 +26,7 @@ defmodule Custodian.Github.Processor do
 
   ## Deleted
   Processes an **uninstallation**. This happens when a user removes the app
-  from a bot. It deletes the given record in the database by its installation
-  id.
+  from a bot. It deletes the given record in the database by its repo id.
   """
   @spec installation(map) :: {:ok, [Bot.t()]}
   def installation(%{"action" => "created"} = params) do
@@ -42,9 +41,7 @@ defmodule Custodian.Github.Processor do
 
   def installation(%{"action" => "removed"} = params) do
     Appsignal.increment_counter("event_installation_deleted_count", 1)
-    Appsignal.increment_counter("bot_count", -1)
-    bot = Bots.get_bot_by!(installation_id: params["installation"]["id"])
-    Bots.delete_bot(bot)
+    delete_bots(params["repositories_removed"])
   end
 
   @doc """
@@ -227,6 +224,23 @@ defmodule Custodian.Github.Processor do
       end)
 
     Appsignal.increment_counter("bot_count", multi |> Multi.to_list() |> length)
+    Repo.transaction(multi)
+  end
+
+  @spec delete_bots([map]) :: {:ok, [Bot.t()]}
+  defp delete_bots(bots) do
+    multi =
+      Enum.reduce(Enum.with_index(bots), Multi.new(), fn {bot, index}, multi ->
+        bot = Bots.get_bot_by!(%{repo_id: bot["id"]})
+
+        Multi.delete(multi, index, bot)
+      end)
+
+    Appsignal.increment_counter(
+      "bot_count",
+      -(multi |> Multi.to_list() |> length)
+    )
+
     Repo.transaction(multi)
   end
 end

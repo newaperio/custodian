@@ -65,13 +65,20 @@ defmodule Custodian.Github.ProcessorTest do
       installation_id: 1
     })
 
+    Bots.create_bot(%{
+      repo_id: 2,
+      owner: "lleger",
+      name: "gh-api-test1",
+      installation_id: 1
+    })
+
     params = %{
       "action" => "removed",
-      "installation" => %{"id" => 1}
+      "repositories_removed" => [%{"id" => 1}, %{"id" => 2}]
     }
 
     assert {:ok, bot} = Processor.installation(params)
-    assert_raise Ecto.NoResultsError, fn -> Bots.get_bot!(bot.id) end
+    assert Bots.list_bots() == []
   end
 
   test "labels pr when opened" do
