@@ -57,13 +57,7 @@ jobs:
           name: Run test suite
           command: |
             mkdir -p ./reports
-            cc-test-reporter before-build
             mix coveralls.json
-
-      - run:
-          name: Report code coverage to Code Climate
-          command: |
-            cc-test-reporter after-build --exit-code $?
 
       - type: store_artifacts
         path: ./cover
