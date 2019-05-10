@@ -191,7 +191,22 @@ defmodule Custodian.Github.Processor do
     {:ok, bot}
   end
 
-  def review(_params), do: :error
+  def review(_params), do: :ok
+
+  @doc """
+  Process repository events.
+
+  - Updates bot name when repository is renamed
+
+  """
+  @spec repo(map) :: {:ok, Bot.t()} | {:error, Ecto.Changeset.t()}
+  def repo(%{"action" => "renamed"} = params) do
+    %{repo_id: params["repository"]["id"]}
+    |> Bots.get_bot_by!()
+    |> Bots.update_bot(%{name: params["repository"]["name"]})
+  end
+
+  def repo(_params), do: :ok
 
   @spec create_bots(integer, [map]) :: {:ok, [Bot.t()]}
   defp create_bots(installation_id, bots) do
